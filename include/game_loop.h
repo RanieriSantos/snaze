@@ -3,12 +3,18 @@
 
 #include <fstream> // Stream class to read and write from/to files - using std::ifstream
 #include <iostream> // std::cout, std::cin
+#include <vector> //std::vector
 
 class GameLoop{
 
     private:
 
         std::string inputFile;
+        
+        struct grid {
+            int nRow, nCol;
+            std::vector<std::vector<int>> map;
+        };
 
     public:
 
