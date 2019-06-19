@@ -1,9 +1,10 @@
 #ifndef GAMELOOP_H
 #define GAMELOOP_H
 
-#include <fstream> // Stream class to read and write from/to files - using std::ifstream
-#include <iostream> // std::cout, std::cin
+#include <fstream> //Stream class to read and write from/to files - using std::ifstream
+#include <iostream> //std::cout, std::cin
 #include <vector> //std::vector
+#include <queue> //std::queue
 
 class GameLoop{
 
