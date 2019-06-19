@@ -13,6 +13,7 @@ class GameLoop{
         
         struct grid {
             int nRow, nCol;
+            int spawn [2];
             std::vector<std::vector<int>> map;
         };
 

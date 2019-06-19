@@ -17,4 +17,9 @@ void GameLoop::read_file(){
 
     std::cout << "File opened successfully! \n";
     std::cout << ">> Processing data ... \n";
+
+    //Vector of grid that's going to safe all maps of the file
+    std::vector <grid> vec_maps;
+
+    
 }
