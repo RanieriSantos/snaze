@@ -1,5 +1,5 @@
-#ifndef GAMELOOP_H
-#define GAMELOOP_H
+#ifndef SNAZEGAME_H
+#define SNAZEGAME_H
 
 #include <fstream>   //Stream class to read and write from/to files - using std::ifstream
 #include <iomanip>   // std::setw, std::setfill
@@ -8,6 +8,8 @@
 #include <sstream>   // std::ostringstream
 #include <string>    //std::string, std::getline.
 #include <vector>    //std::vector
+
+#include "basicStructures.h" //position
 
 static const char SPAWN = '*';      // Snake spawn.
 static const char WHT_SPACE = ' ';  // White space.
@@ -18,9 +20,7 @@ class GameLoop {
        private:
         struct grid {
                 // Snake initial position.
-                struct spawn {
-                        short row, col;
-                } spawn;
+                position spawn;
 
                 short num_row, num_col;              // Number of rows and columns.
                 std::vector<std::vector<char>> map;  // Map from file.
@@ -30,7 +30,7 @@ class GameLoop {
 
                         std::cout << "Size:\t[" << num_row << " x " << num_col << "]\n"
                                   << std::endl;
-                        std::cout << "Spawn:\t[" << spawn.row << "][" << spawn.col << "]\n"
+                        std::cout << "Spawn:\t[" << spawn.index_row << "][" << spawn.index_column << "]\n"
                                   << std::endl;
 
                         for (int i = 0; i < num_row; i++) {
@@ -51,7 +51,9 @@ class GameLoop {
         };
 
         std::queue<grid> vec_maps;  // Maps from file.
-        std::string inputFile;
+        std::string inputFile; //String that saves input path
+
+        
 
         //! \brief Read file with snaze maps.
         int read_file(int argc, char *argv[]);

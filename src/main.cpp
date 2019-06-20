@@ -1,4 +1,4 @@
-#include <../include/game_loop.h>
+#include <../include/snazeGame.h>
 
 int main(int argc, char* argv[]) {
         GameLoop game;

@@ -1,4 +1,5 @@
-#include "../include/game_loop.h"
+#include "../include/snazeGame.h"
+#include "../include/output.h"
 
 // funtion used to read a file with the maps used on Snaze
 int GameLoop::read_file(int argc, char *argv[]) {
@@ -55,8 +56,8 @@ int GameLoop::read_file(int argc, char *argv[]) {
                                         currMap.map[i].push_back(WHT_SPACE);
                                 } else if (line[j] == SPAWN) {  // Spawn.
                                         currMap.map[i].push_back(SPAWN);
-                                        currMap.spawn.row = i;
-                                        currMap.spawn.col = j;
+                                        currMap.spawn.index_row = i;
+                                        currMap.spawn.index_column = j;
                                 } else if (line[j] == INV_WALL) {  // Invisible wall.
                                         currMap.map[i].push_back(INV_WALL);
                                 } else {  // Common wall.
@@ -68,17 +69,21 @@ int GameLoop::read_file(int argc, char *argv[]) {
                         i++;
                 }
 
+                
+
                 vec_maps.push(currMap);  // Add to the queue of maps.
                 currMap.print_map();     // #DEBUG
+
         }
 
         return EXIT_SUCCESS;
 }
 
+//function that will initialize the game, it'll save maps from a file on an queue that will be used on snaze
 void GameLoop::initialize(int argc, char *argv[]) {
         if (read_file(argc, argv) == EXIT_FAILURE) {
                 exit(EXIT_FAILURE);
         }
 
-        // print_initial_msg();  // Print welcome message.
+        init_msg();  // Print welcome message.
 }
