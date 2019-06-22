@@ -17,39 +17,8 @@ static const char WALL = '#';       // Common wall.
 static const char INV_WALL = '.';   // Invisible wall.
 
 class GameLoop {
+        
        private:
-        struct grid {
-                // Snake initial position.
-                position spawn;
-
-                short num_row, num_col;              // Number of rows and columns.
-                std::vector<std::vector<char>> map;  // Map from file.
-
-                void print_map() {
-                        std::ostringstream data;
-
-                        std::cout << "Size:\t[" << num_row << " x " << num_col << "]\n"
-                                  << std::endl;
-                        std::cout << "Spawn:\t[" << spawn.index_row << "][" << spawn.index_column << "]\n"
-                                  << std::endl;
-
-                        for (int i = 0; i < num_row; i++) {
-                                if (i < 10) {
-                                        data << "[" << i << "]" << std::setw(2) << " ";
-                                } else {
-                                        data << "[" << i << "]" << std::setw(1) << " ";
-                                }
-
-                                for (int j = 0; j < num_col; j++) {
-                                        data << std::setw(1) << map[i][j] << " ";
-                                }
-                                data << '\n';
-                        }
-
-                        std::cout << data.str() << std::endl;
-                }
-        };
-
         std::queue<grid> vec_maps;  // Maps from file.
         std::string inputFile; //String that saves input path
 
