@@ -10,6 +10,7 @@
 #include <vector>    //std::vector
 
 #include "basicStructures.h" //position
+#include "level.h"//maps
 
 static const char SPAWN = '*';      // Snake spawn.
 static const char WHT_SPACE = ' ';  // White space.
@@ -19,7 +20,7 @@ static const char INV_WALL = '.';   // Invisible wall.
 class GameLoop {
         
        private:
-        std::queue<grid> vec_maps;  // Maps from file.
+        std::queue<Level> vec_maps;  // Maps from file.
         std::string inputFile; //String that saves input path
 
         
@@ -38,6 +39,10 @@ class GameLoop {
         /////////////////////////////////////////////
         // I/O functions
         /////////////////////////////////////////////
+
+
+        //Test Class
+        void test();
 };
 
 #endif

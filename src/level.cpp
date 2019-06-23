@@ -15,8 +15,26 @@ void Level::generate_food_position (){
         }
         //we also need to verify if the food is on top of the snake
 
-        //if it pass all the condition it's a valide position
+        //if it pass all the conditions it's a valide position
+        currFood.index_row = indexI;
+        currFood.index_column = indexJ;
         validPosition = true;
     }
+};
 
+//Gets and Sets
+void Level::set_mapRow (int row){
+    map.num_row = row;
+};
+
+void Level::set_mapCol (int col){
+    map.num_col = col;
+};
+
+int Level::get_mapRow(){
+    return map.num_row;
+};
+
+int Level::get_mapColumn(){
+    return map.num_col;
 };

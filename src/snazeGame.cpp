@@ -28,15 +28,19 @@ int GameLoop::read_file(int argc, char *argv[]) {
         std::cout << ">> Processing data ... \n";
 
         while (!file.eof()) {
-                grid currMap;  // Save each map temporarilly.
+                Level currMap;  // Save each map temporarilly.
+
+                int auxRow, auxCol;
 
                 // Number of rows and columns of the map;
-                file >> currMap.num_row >> currMap.num_col;
+                file >> auxRow >> auxCol;
+                currMap.set_mapRow(auxRow);
+                currMap.set_mapCol(auxCol);
                 file.ignore();
 
                 // Checking if they're zero or greather than the maximun size (MAX_SIZE).
-                if ((currMap.num_row <= 0) || (currMap.num_col <= 0) ||
-                    (currMap.num_row > MAX_SIZE) || (currMap.num_col > MAX_SIZE)) {
+                if ((currMap.get_mapRow() <= 0) || (currMap.get_mapColumn() <= 0) ||
+                    (currMap.get_mapRow() > MAX_SIZE) || (currMap.get_mapColumn() > MAX_SIZE)) {
                         std::cerr << "\n\033[0;31m >> Error: Unacceptable number of "
                                      "rows/columns\033[0m\n";
                         exit(EXIT_FAILURE);
@@ -45,23 +49,23 @@ int GameLoop::read_file(int argc, char *argv[]) {
                 // Prepare to receive the map.
                 short i = 0;                          // Number of the current row.
                 std::string line;                     // Current row itself.
-                currMap.map.resize(currMap.num_row);  // Prepare the matrix;
+                currMap.map.map.resize(currMap.get_mapRow());  // Prepare the matrix;
 
                 // Read the map.
-                while ((std::getline(file, line)) && (i < currMap.num_row)) {
+                while ((std::getline(file, line)) && (i < currMap.get_mapRow())){
                         short j = 0;
 
-                        while (j < (short)line.size() && (j < currMap.num_col)) {
+                        while (j < (short)line.size() && (j < currMap.get_mapColumn())) {
                                 if (line[j] == WHT_SPACE) {  // White space.
-                                        currMap.map[i].push_back(WHT_SPACE);
+                                        currMap.map.map[i].push_back(WHT_SPACE);
                                 } else if (line[j] == SPAWN) {  // Spawn.
-                                        currMap.map[i].push_back(SPAWN);
-                                        currMap.spawn.index_row = i;
-                                        currMap.spawn.index_column = j;
+                                        currMap.map.map[i].push_back(SPAWN);
+                                        currMap.map.spawn.index_row = i;
+                                        currMap.map.spawn.index_column = j;
                                 } else if (line[j] == INV_WALL) {  // Invisible wall.
-                                        currMap.map[i].push_back(INV_WALL);
+                                        currMap.map.map[i].push_back(INV_WALL);
                                 } else {  // Common wall.
-                                        currMap.map[i].push_back(WALL);
+                                        currMap.map.map[i].push_back(WALL);
                                 }
                                 j++;
                         }
@@ -69,10 +73,8 @@ int GameLoop::read_file(int argc, char *argv[]) {
                         i++;
                 }
 
-                
-
                 vec_maps.push(currMap);  // Add to the queue of maps.
-                currMap.print_map();     // #DEBUG
+                currMap.map.print_map();     // #DEBUG
 
         }
 
@@ -86,4 +88,9 @@ void GameLoop::initialize(int argc, char *argv[]) {
         }
 
         init_msg();  // Print welcome message.
+}
+
+void GameLoop::test(){
+        vec_maps.front().generate_food_position();
+        std::cout<<"i = "<<vec_maps.front().currFood.index_row <<"j = " << vec_maps.front().currFood.index_column;
 }
