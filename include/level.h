@@ -11,13 +11,14 @@ class Level {
        private:
         // position currFood; //position of current food
         int numFood = 10;  // Each map begins with 10 food
-        Snake* pSnake;     // pointer to the Snake
+        
 
         //! \brief Funtion that will set a position for the current food
         // void generate_food_position ();
 
        public:
         grid map;  // Map itself
+        Snake* pSnake;     // pointer to the Snake
 
         //! \brief Level constructor
         //! \param snake - vector of position that represents snake body

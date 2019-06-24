@@ -23,6 +23,8 @@ class GameLoop {
                 std::queue<Level> vec_maps;  // Maps from file.
                 std::string inputFile; //String that saves input path
                 Snake snake; //Snake that will be played
+                int score; //player score
+                int currLevel = 1; //number of our current level
 
         
 
@@ -43,6 +45,7 @@ class GameLoop {
                 /////////////////////////////////////////////
                 // I/O functions
                 /////////////////////////////////////////////
+                void render();
 
 
                 //Test Class
