@@ -10,8 +10,7 @@ struct position {
         int index_row, index_column;
 
         bool operator==(const position& pos){
-                position temp;
-                if ((temp.index_row == pos.index_row) && (temp.index_column == pos.index_column )){
+                if ((index_row == pos.index_row) && (index_column == pos.index_column )){
                         return true;
                 }else{
                         return false;
