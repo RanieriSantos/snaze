@@ -103,6 +103,8 @@ void GameLoop::render(){
 
         for (int i = 0; i < vec_maps.front().map.num_row; i++) {
                 for (int j = 0; j < vec_maps.front().map.num_col; j++) {
+
+                        bool is_there = false;
                         
                         // position aux
                         position verifies;
@@ -112,18 +114,24 @@ void GameLoop::render(){
                         //verifies if it's snake
                         for (auto value : vec_maps.front().pSnake->get_snake()){
                                 if (value == verifies) {
-                                        data<< std::setw(1) << "\u25A0";
+                                        data<< std::setw(1) << "\u25A0"<<" ";
+                                        is_there = true;
                                         break;
                                 }
                         }
                         
                         //verifies if it's food
                         if (verifies == vec_maps.front().currFood){
-                                data<< std::setw(1) << "\u1F400";
+                                data<< std::setw(1) << "🐁";
+                                is_there = true;
                         }
 
                         //If is neither food nor snake prints map
-                        data << std::setw(1) << vec_maps.front().map.map[i][j] << " ";
+                        if (!is_there){
+                                data << std::setw(1) << vec_maps.front().map.map[i][j] << " ";
+                        }
+                        
+                        
                 }
                 data << '\n';
         }
