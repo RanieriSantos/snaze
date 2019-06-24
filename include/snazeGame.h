@@ -20,29 +20,33 @@ static const char INV_WALL = '.';   // Invisible wall.
 class GameLoop {
         
        private:
-        std::queue<Level> vec_maps;  // Maps from file.
-        std::string inputFile; //String that saves input path
+                std::queue<Level> vec_maps;  // Maps from file.
+                std::string inputFile; //String that saves input path
+                Snake snake; //Snake that will be played
 
         
 
-        //! \brief Read file with snaze maps.
-        int read_file(int argc, char *argv[]);
+                //! \brief Read file with snaze maps.
+                int read_file(int argc, char *argv[]);
+
+                //! \brief Initialize snake of the map
+                void init_Snake();
 
        public:
-        /////////////////////////////////////////////
-        // Client functions
-        /////////////////////////////////////////////
+                /////////////////////////////////////////////
+                // Client functions
+                /////////////////////////////////////////////
 
-        //! \brief Initialize the game.
-        void initialize(int argc, char *argv[]);
+                //! \brief Initialize the game.
+                void initialize(int argc, char *argv[]);
 
-        /////////////////////////////////////////////
-        // I/O functions
-        /////////////////////////////////////////////
+                /////////////////////////////////////////////
+                // I/O functions
+                /////////////////////////////////////////////
 
 
-        //Test Class
-        void test();
+                //Test Class
+                void test();
 };
 
 #endif

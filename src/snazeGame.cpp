@@ -1,5 +1,6 @@
 #include "../include/snazeGame.h"
 #include "../include/output.h"
+#include "../include/basicStructures.h"
 
 // funtion used to read a file with the maps used on Snaze
 int GameLoop::read_file(int argc, char *argv[]) {
@@ -91,6 +92,10 @@ void GameLoop::initialize(int argc, char *argv[]) {
 }
 
 void GameLoop::test(){
+        snake.set_snake(9,3);
+        vec_maps.front().set_snake(snake);
+        //generates food
         vec_maps.front().generate_food_position();
+        
         std::cout<<"i = "<<vec_maps.front().currFood.index_row <<"j = " << vec_maps.front().currFood.index_column;
 }
