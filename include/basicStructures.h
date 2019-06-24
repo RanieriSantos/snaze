@@ -1,20 +1,20 @@
 #ifndef BASICSTRUCTURES_H
 #define BASICSTRUCTURES_H
 
-#include <vector> //std::vector
-#include <sstream>   // std::ostringstream
-#include <iostream> //std::cout
 #include <iomanip>   // std::setw, std::setfill
+#include <iostream>  //std::cout
+#include <sstream>   // std::ostringstream
+#include <vector>    //std::vector
 
-struct position{
-    int index_row, index_column;
+struct position {
+        int index_row, index_column;
 };
 
-enum Directions{
-    north,  //0
-    south,  //1
-    west,   //2
-    east    //3
+enum Directions {
+        north,  // 0
+        south,  // 1
+        west,   // 2
+        east    // 3
 };
 
 struct grid {
@@ -27,10 +27,9 @@ struct grid {
         void print_map() {
                 std::ostringstream data;
 
-                std::cout << "Size:\t[" << num_row << " x " << num_col << "]\n"
-                            << std::endl;
+                std::cout << "Size:\t[" << num_row << " x " << num_col << "]\n" << std::endl;
                 std::cout << "Spawn:\t[" << spawn.index_row << "][" << spawn.index_column << "]\n"
-                            << std::endl;
+                          << std::endl;
 
                 for (int i = 0; i < num_row; i++) {
                         if (i < 10) {
@@ -47,7 +46,6 @@ struct grid {
 
                 std::cout << data.str() << std::endl;
         }
-    };
-
+};
 
 #endif

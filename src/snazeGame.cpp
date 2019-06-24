@@ -1,6 +1,6 @@
 #include "../include/snazeGame.h"
-#include "../include/output.h"
 #include "../include/basicStructures.h"
+#include "../include/output.h"
 
 // funtion used to read a file with the maps used on Snaze
 int GameLoop::read_file(int argc, char *argv[]) {
@@ -48,12 +48,12 @@ int GameLoop::read_file(int argc, char *argv[]) {
                 }
 
                 // Prepare to receive the map.
-                short i = 0;                          // Number of the current row.
-                std::string line;                     // Current row itself.
+                short i = 0;                                   // Number of the current row.
+                std::string line;                              // Current row itself.
                 currMap.map.map.resize(currMap.get_mapRow());  // Prepare the matrix;
 
                 // Read the map.
-                while ((std::getline(file, line)) && (i < currMap.get_mapRow())){
+                while ((std::getline(file, line)) && (i < currMap.get_mapRow())) {
                         short j = 0;
 
                         while (j < (short)line.size() && (j < currMap.get_mapColumn())) {
@@ -74,15 +74,15 @@ int GameLoop::read_file(int argc, char *argv[]) {
                         i++;
                 }
 
-                vec_maps.push(currMap);  // Add to the queue of maps.
-                currMap.map.print_map();     // #DEBUG
-
+                vec_maps.push(currMap);   // Add to the queue of maps.
+                currMap.map.print_map();  // #DEBUG
         }
 
         return EXIT_SUCCESS;
 }
 
-//function that will initialize the game, it'll save maps from a file on an queue that will be used on snaze
+// function that will initialize the game, it'll save maps from a file on an queue that will be used
+// on snaze
 void GameLoop::initialize(int argc, char *argv[]) {
         if (read_file(argc, argv) == EXIT_FAILURE) {
                 exit(EXIT_FAILURE);
@@ -91,11 +91,12 @@ void GameLoop::initialize(int argc, char *argv[]) {
         init_msg();  // Print welcome message.
 }
 
-void GameLoop::test(){
-        snake.set_snake(9,3);
-        vec_maps.front().set_snake(snake);
-        //generates food
+void GameLoop::test() {
+        snake.set_snake(9, 3);
+        vec_maps.front().set_snake(&snake);
+        // generates food
         vec_maps.front().generate_food_position();
-        
-        std::cout<<"i = "<<vec_maps.front().currFood.index_row <<"j = " << vec_maps.front().currFood.index_column;
+
+        std::cout << "i = " << vec_maps.front().currFood.index_row << "\n"
+                  << "j = " << vec_maps.front().currFood.index_column << "\n";
 }

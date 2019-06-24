@@ -1,67 +1,58 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
+#include <time.h>     // Used to generate a radom food all the time the program is run
+#include <algorithm>  // std::find
+#include <vector>     //std::vector
 #include "basicStructures.h"
-#include "snake.h" //We need this to generate the food
-#include <time.h> // Used to generate a radom food all the time the program is run
-#include <vector> //std::vector
-#include <algorithm> // std::find 
+#include "snake.h"  //We need this to generate the food
 
 class Level {
-
-    private:
-
-        //position currFood; //position of current food
-        int numFood = 10; // Each map begins with 10 food
-        Snake * pSnake; //pointer to the Snake
+       private:
+        // position currFood; //position of current food
+        int numFood = 10;  // Each map begins with 10 food
+        Snake* pSnake;     // pointer to the Snake
 
         //! \brief Funtion that will set a position for the current food
-        //void generate_food_position ();
+        // void generate_food_position ();
 
-    public: 
-        grid map; // Map itself
+       public:
+        grid map;  // Map itself
 
         //! \brief Level constructor
         //! \param snake - vector of position that represents snake body
-        Level(){
-            //default
+        Level() {
+                // default
         }
-        Level(grid lvl){
-            map = lvl;
-        }
-        Level(Snake snake){
-            pSnake = &snake;
-        }
+        Level(grid lvl) { map = lvl; }
+        Level(Snake snake) { pSnake = &snake; }
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GETS
         //! \brief Return how many food are missing to be eaten
-        int get_numFood ();
+        int get_numFood();
 
-        //!brief Returns number of rows of map
+        //! brief Returns number of rows of map
         int get_mapRow();
 
-        //!brief Returns number of columns of map
+        //! brief Returns number of columns of map
         int get_mapColumn();
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SETS
         //! \brief Sets number of food that are missing
         void set_numFood(int num);
 
-        //!brief Set map rows
-        void set_mapRow (int row);
+        //! brief Set map rows
+        void set_mapRow(int row);
 
-        //!brief Set map columns
-        void set_mapCol (int col);
+        //! brief Set map columns
+        void set_mapCol(int col);
 
-        //!brief Set snake pointer to the used snake
-        void set_snake (Snake snake);
+        //! brief Set snake pointer to the used snake
+        void set_snake(Snake* snake);
 
-       
-
-        //test - after test position them at private
+        // test - after test position them at private
         position currFood;
-        void generate_food_position ();
-
+        void generate_food_position();
 };
 
 #endif
