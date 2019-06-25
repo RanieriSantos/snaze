@@ -91,6 +91,18 @@ void GameLoop::initialize(int argc, char *argv[]) {
         init_msg();  // Print welcome message.
 }
 
+bool GameLoop::game_over() {
+
+}
+
+void GameLoop::process_events() {
+
+}
+
+void GameLoop::update() {
+        
+}
+
 void GameLoop::render() {
         // jumping line
         std::cout << std::endl;

@@ -32,12 +32,20 @@ class GameLoop {
         // Client functions
         /////////////////////////////////////////////
 
-        //! \brief Initialize the game.
+        //! \brief Start the simulation reading from the input file.
         void initialize(int argc, char *argv[]);
 
-        /////////////////////////////////////////////
-        // I/O functions
-        /////////////////////////////////////////////
+        //! \brief Runs while extinction, stability, or maximum generation is not reached.
+        // \return true if extintion, stabilty or maximum generation has been reached.
+        bool game_over();
+
+        //! Apply the rules of conway's game of life, defining which cells will live.
+        void process_events();
+
+        //! Update the petri_dish with the new generation, adding and removing cells.
+        void update();
+
+        //! Process the output (text and images).
         void render();
 
         // Test Class
