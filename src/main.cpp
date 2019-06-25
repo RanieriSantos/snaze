@@ -6,11 +6,9 @@ int main(int argc, char* argv[]) {
         game.initialize(argc, argv);
 
         game.test();
-       
 
         game.render();
 
-        
         return 0;
 
         // Simulation game;

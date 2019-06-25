@@ -6,15 +6,17 @@
 #include <sstream>   // std::ostringstream
 #include <vector>    //std::vector
 
+static const char SPAWN = '*';      // Snake spawn.
+static const char WHT_SPACE = ' ';  // White space.
+static const char WALL = '#';       // Common wall.
+static const char INV_WALL = '.';   // Invisible wall.
+static const char FOOD = 'F';       // Food.
+
 struct position {
         int index_row, index_column;
 
-        bool operator==(const position& pos){
-                if ((index_row == pos.index_row) && (index_column == pos.index_column )){
-                        return true;
-                }else{
-                        return false;
-                }
+        bool operator==(const position& pos) {
+                return ((index_row == pos.index_row) && (index_column == pos.index_column));
         }
 };
 

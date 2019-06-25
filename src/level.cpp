@@ -11,7 +11,7 @@ void Level::generate_food_position() {
                 // verifies if the position is not an wall or invisible wall
                 if (map.map[indexI][indexJ] != '#' && map.map[indexI][indexJ] != '.') {
                         // verifies if the position is not the snake
-                        for (auto const& value : pSnake->get_snake()) {
+                        for (auto const& value : *pSnake->get_snake()) {
                                 if ((value.index_row) == indexI && (value.index_row == indexJ)) {
                                         validPosition = false;
                                         break;

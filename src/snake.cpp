@@ -19,7 +19,7 @@ void Snake::lost_life(position respawn) {
 
 int Snake::get_lifes() { return lifes; }
 
-std::vector<position> Snake::get_snake() { return snake; }
+std::vector<position>* Snake::get_snake() { return &snake; }
 
 Directions Snake::get_diretion() { return direc; }
 

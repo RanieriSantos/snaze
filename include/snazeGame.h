@@ -9,47 +9,39 @@
 #include <string>    //std::string, std::getline.
 #include <vector>    //std::vector
 
-#include "basicStructures.h" //position
-#include "level.h"//maps
-
-static const char SPAWN = '*';      // Snake spawn.
-static const char WHT_SPACE = ' ';  // White space.
-static const char WALL = '#';       // Common wall.
-static const char INV_WALL = '.';   // Invisible wall.
+#include "basicStructures.h"  // position
+#include "level.h"            // maps
+#include "player.h"           // Player
 
 class GameLoop {
-        
        private:
-                std::queue<Level> vec_maps;  // Maps from file.
-                std::string inputFile; //String that saves input path
-                Snake snake; //Snake that will be played
-                int score; //player score
-                int currLevel = 1; //number of our current level
+        std::queue<Level> vec_maps;  // Maps from file.
+        std::string inputFile;       // String that saves input path
+        Snake snake;                 // Snake that will be played
+        int score;                   // player score
+        int currLevel = 1;           // number of our current level
 
-        
+        //! \brief Read file with snaze maps.
+        int read_file(int argc, char *argv[]);
 
-                //! \brief Read file with snaze maps.
-                int read_file(int argc, char *argv[]);
-
-                //! \brief Initialize snake of the map
-                void init_Snake();
+        //! \brief Initialize snake of the map
+        void init_Snake();
 
        public:
-                /////////////////////////////////////////////
-                // Client functions
-                /////////////////////////////////////////////
+        /////////////////////////////////////////////
+        // Client functions
+        /////////////////////////////////////////////
 
-                //! \brief Initialize the game.
-                void initialize(int argc, char *argv[]);
+        //! \brief Initialize the game.
+        void initialize(int argc, char *argv[]);
 
-                /////////////////////////////////////////////
-                // I/O functions
-                /////////////////////////////////////////////
-                void render();
+        /////////////////////////////////////////////
+        // I/O functions
+        /////////////////////////////////////////////
+        void render();
 
-
-                //Test Class
-                void test();
+        // Test Class
+        void test();
 };
 
 #endif

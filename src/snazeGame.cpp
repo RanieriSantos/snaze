@@ -91,63 +91,58 @@ void GameLoop::initialize(int argc, char *argv[]) {
         init_msg();  // Print welcome message.
 }
 
-void GameLoop::render(){
-        //jumping line
+void GameLoop::render() {
+        // jumping line
         std::cout << std::endl;
 
-        //printing Score, number of currLevel and lifes remaining
-        std::cout << "SCORE: "<< score <<"          "<<" LEVEL: "<< currLevel << "          \u2764 :" << snake.get_lifes()<< "\n";
+        // printing Score, number of currLevel and lifes remaining
+        std::cout << "SCORE: " << score << "          "
+                  << " LEVEL: " << currLevel << "          \u2764 :" << snake.get_lifes() << "\n";
 
-        //print map with snake
+        // print map with snake
         std::ostringstream data;
 
         for (int i = 0; i < vec_maps.front().map.num_row; i++) {
                 for (int j = 0; j < vec_maps.front().map.num_col; j++) {
-
                         bool is_there = false;
-                        
+
                         // position aux
                         position verifies;
                         verifies.index_row = i;
                         verifies.index_column = j;
 
-                        //verifies if it's snake
-                        for (auto value : vec_maps.front().pSnake->get_snake()){
+                        // verifies if it's snake
+                        for (auto value : *vec_maps.front().pSnake->get_snake()) {
                                 if (value == verifies) {
-                                        data<< std::setw(1) << "\u25A0"<<" ";
+                                        data << std::setw(1) << "\u25A0"
+                                             << " ";
                                         is_there = true;
                                         break;
                                 }
                         }
-                        
-                        //verifies if it's food
-                        if (verifies == vec_maps.front().currFood){
-                                data<< std::setw(1) << "🐁";
+
+                        // verifies if it's food
+                        if (verifies == vec_maps.front().currFood) {
+                                data << std::setw(1) << "🐁";
                                 is_there = true;
                         }
 
-                        //If is neither food nor snake prints map
-                        if (!is_there){
+                        // If is neither food nor snake prints map
+                        if (!is_there) {
                                 data << std::setw(1) << vec_maps.front().map.map[i][j] << " ";
                         }
-                        
-                        
                 }
                 data << '\n';
         }
 
         std::cout << data.str() << std::endl;
-        
-
 }
 
 void GameLoop::test() {
         snake.set_snake(9, 3);
         vec_maps.front().set_snake(&snake);
-        // generates food
-        vec_maps.front().generate_food_position();
 
-        std::cout << "i = " << vec_maps.front().currFood.index_row << "\n"
-                  << "j = " << vec_maps.front().currFood.index_column << "\n";
+        Player dumb_ia;
+        dumb_ia.setLevel(&vec_maps.front());
+        dumb_ia.create_path();
 }
-

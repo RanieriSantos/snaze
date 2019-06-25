@@ -1,10 +1,7 @@
-//Functions used to output mensages will be written here
+// Functions used to output mensages will be written here
 
-#include <sstream>   // std::ostringstream
+#include <sstream>  // std::ostringstream
 
 #include "../include/output.h"
 
-
-void init_msg (){
-    std::cout<< ">>>>>>>>>>>>>>> SNAZE STARTED <<<<<<<<<<<<<<<< \n";
-}
+void init_msg() { std::cout << ">>>>>>>>>>>>>>> SNAZE STARTED <<<<<<<<<<<<<<<< \n"; }

@@ -11,14 +11,14 @@ class Level {
        private:
         // position currFood; //position of current food
         int numFood = 10;  // Each map begins with 10 food
-        
 
         //! \brief Funtion that will set a position for the current food
-        // void generate_food_position ();
+        void generate_food_position();
 
        public:
-        grid map;  // Map itself
-        Snake* pSnake;     // pointer to the Snake
+        grid map;       // Map itself
+        Snake* pSnake;  // pointer to the Snake
+        position currFood;
 
         //! \brief Level constructor
         //! \param snake - vector of position that represents snake body
@@ -27,6 +27,8 @@ class Level {
         }
         Level(grid lvl) { map = lvl; }
         Level(Snake snake) { pSnake = &snake; }
+
+        ~Level(){};
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GETS
         //! \brief Return how many food are missing to be eaten
@@ -50,10 +52,6 @@ class Level {
 
         //! brief Set snake pointer to the used snake
         void set_snake(Snake* snake);
-
-        // test - after test position them at private
-        position currFood;
-        void generate_food_position();
 };
 
 #endif
