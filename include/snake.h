@@ -56,6 +56,9 @@ class Snake{
         //! \brief add direction of snake
         void set_diretion (Directions direction);
 
+        //! \brief moves the snake body
+        void move(Directions way);
+
 };
 
 

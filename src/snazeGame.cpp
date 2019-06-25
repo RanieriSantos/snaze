@@ -122,7 +122,7 @@ void GameLoop::render(){
                         
                         //verifies if it's food
                         if (verifies == vec_maps.front().currFood){
-                                data<< std::setw(1) << "🐁";
+                                data<< std::setw(1) << "🐁 ";
                                 is_there = true;
                         }
 
@@ -143,6 +143,13 @@ void GameLoop::render(){
 
 void GameLoop::test() {
         snake.set_snake(9, 3);
+        snake.set_snake(10, 3);
+        snake.set_snake(11, 3);
+        snake.set_snake(11, 4);
+        snake.set_snake(11, 5);
+        snake.set_snake(11, 6);
+        snake.move(north);
+        snake.move(east);
         vec_maps.front().set_snake(&snake);
         // generates food
         vec_maps.front().generate_food_position();
