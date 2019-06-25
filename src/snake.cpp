@@ -33,3 +33,58 @@ void Snake::set_snake(int row, int col) {
 }
 
 void Snake::set_diretion(Directions direction) { direc = direction; }
+
+void Snake::move(Directions way) {
+        position last_head = snake[0];
+        position aux;
+
+        switch (way) {
+                case north:  // North -i  keep j
+                        for (auto &value : snake) {
+                                if (last_head == snake[0]) {
+                                        snake[0].index_row--;
+                                } else {
+                                        aux = value;
+                                        value = last_head;
+                                        last_head = aux;
+                                }
+                        }
+                        break;
+
+                case south:  // South +i  keep j
+                        for (auto &value : snake) {
+                                if (last_head == snake[0]) {
+                                        snake[0].index_row++;
+                                } else {
+                                        aux = value;
+                                        value = last_head;
+                                        last_head = aux;
+                                }
+                        }
+                        break;
+
+                case west:  // West  keep i  --j
+                        for (auto &value : snake) {
+                                if (last_head == snake[0]) {
+                                        snake[0].index_column--;
+                                } else {
+                                        aux = value;
+                                        value = last_head;
+                                        last_head = aux;
+                                }
+                        }
+                        break;
+
+                case east:  // East  keep i  +j
+                        for (auto &value : snake) {
+                                if (last_head == snake[0]) {
+                                        snake[0].index_column++;
+                                } else {
+                                        aux = value;
+                                        value = last_head;
+                                        last_head = aux;
+                                }
+                        }
+                        break;
+        }
+}

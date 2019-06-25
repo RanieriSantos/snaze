@@ -10,7 +10,7 @@ class Snake {
         int lifes = 5;                // number of snake lifes. Initating with 5
         std::vector<position> snake;  // snake head + body. Index 0 = snake head
         Directions direc;             // snake direction
-        // pointe to current level
+                                      // pointe to current level
 
        public:
         //! |brief Snake constructor
@@ -53,6 +53,8 @@ class Snake {
 
         //! \brief add direction of snake
         void set_diretion(Directions direction);
+
+        void move(Directions way);
 };
 
 #endif
